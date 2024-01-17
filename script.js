@@ -8,7 +8,11 @@ const adviceCall = async () => {
     throw new Error("Network response was not ok");
    }    
    const data = await response.json();
-   return data.slip.advice;
+   const advice = data.slip.advice;
+   const id = data.slip.id;
+   console.log(id)
+   console.log(advice)
+   return {advice, id}
     } catch (error) {
         console.log("Error:", error);
         return null;
@@ -17,8 +21,11 @@ const adviceCall = async () => {
 };
 
 async function handleButtonClick(){
-    const advice = await adviceCall();
-    document.getElementById("adviceDisplay").innerText = advice;
+    const results = await adviceCall();
+    if(results){
+        document.getElementById("adviceDisplay").innerText = results.advice;
+        document.getElementById("idDisplay").innerText = "Advice #" + results.id;
+    }
 }
 
 document.getElementById("adviceButton").addEventListener("click", handleButtonClick);
