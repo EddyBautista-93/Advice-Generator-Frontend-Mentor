@@ -6,9 +6,18 @@ ul {
     list-style: none;
 }
 
+#advice-body {
+    display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 #advice {
    border: 2px solid white;
-   
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 375px;
 }
 
 #adviceDisplay {
